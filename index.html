@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,29 +15,29 @@
             min-height: 100vh;
             font-family: 'Arial', sans-serif;
         }
-
+        
         /* Styling for main containers */
         .auth-container {
             max-width: 400px;
             margin: 100px auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             padding: 40px;
         }
-
+        
         .dashboard-container {
             margin: 20px auto;
             max-width: 1200px;
         }
-
+        
         /* Header styling for forms */
         .form-header {
             text-align: center;
             margin-bottom: 30px;
             color: #333;
         }
-
+        
         /* Custom button styling */
         .btn-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -46,78 +45,78 @@
             border-radius: 25px;
             padding: 12px 30px;
         }
-
+        
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-
+        
         /* Navigation bar styling */
         .navbar {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
         }
-
+        
         /* Table styling */
         .table-container {
             background: white;
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-
+        
         /* Hide sections by default */
         .section {
             display: none;
         }
-
+        
         .section.active {
             display: block;
         }
-
+        
         /* Alert styling */
         .alert {
             border-radius: 10px;
         }
-
+        
         /* Form input styling */
         .form-control {
             border-radius: 10px;
             padding: 12px 15px;
             border: 2px solid #e0e0e0;
         }
-
+        
         .form-control:focus {
             border-color: #667eea;
             box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
         }
-
+        
         /* Modal styling */
         .modal-content {
             border-radius: 15px;
         }
-
+        
         .modal-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-radius: 15px 15px 0 0;
         }
-
+        
         /* Statistics cards styling */
         .stat-card {
             background: white;
             border-radius: 15px;
             padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             text-align: center;
         }
-
+        
         .stat-value {
             font-size: 2.5rem;
             font-weight: bold;
             color: #667eea;
         }
-
+        
         .stat-label {
             color: #666;
             font-size: 0.9rem;
@@ -126,7 +125,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- SIGNUP SECTION -->
     <!-- This section contains the user registration form -->
@@ -157,7 +155,7 @@
             </form>
             <!-- Link to switch to login -->
             <div class="text-center mt-3">
-                <p class="mb-0">Already have an account?
+                <p class="mb-0">Already have an account? 
                     <a href="#" id="show-login" class="text-primary">Login here</a>
                 </p>
             </div>
@@ -191,7 +189,7 @@
             </form>
             <!-- Link to switch to signup -->
             <div class="text-center mt-3">
-                <p class="mb-0">Don't have an account?
+                <p class="mb-0">Don't have an account? 
                     <a href="#" id="show-signup" class="text-primary">Sign up here</a>
                 </p>
             </div>
@@ -339,16 +337,16 @@
 
     <!-- Bootstrap JS for interactive components -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
+    
     <script>
         // ===== DATA MANAGEMENT =====
         // This section handles all data storage and retrieval using JSON in memory
-
+        
         // Sample user data - in a real app this would be in a database
         let users = [
             { id: 1, username: 'admin', email: 'admin@example.com', password: 'admin123' }
         ];
-
+        
         // Sample inventory data - this simulates a JSON database
         let inventory = [
             { id: 1, name: 'Laptop Computer', category: 'Electronics', quantity: 25, price: 899.99 },
@@ -357,16 +355,16 @@
             { id: 4, name: 'Desk Lamp', category: 'Furniture', quantity: 12, price: 39.99 },
             { id: 5, name: 'Notebook Set', category: 'Stationery', quantity: 100, price: 12.99 }
         ];
-
+        
         // Current logged-in user
         let currentUser = null;
-
+        
         // Counter for generating new item IDs
         let nextItemId = inventory.length > 0 ? Math.max(...inventory.map(item => item.id)) + 1 : 1;
 
         // ===== UTILITY FUNCTIONS =====
         // These functions handle common operations throughout the app
-
+        
         // Function to show specific section and hide others
         function showSection(sectionId) {
             // Hide all sections first
@@ -376,7 +374,7 @@
             // Show the requested section
             document.getElementById(sectionId).classList.add('active');
         }
-
+        
         // Function to show alert messages
         function showAlert(message, type = 'danger', containerId = 'login-alert') {
             const alertContainer = document.getElementById(containerId);
@@ -391,22 +389,22 @@
 
         // ===== AUTHENTICATION FUNCTIONS =====
         // These functions handle user registration and login
-
+        
         // Handle user signup
         function handleSignup(event) {
             event.preventDefault(); // Prevent form submission
-
+            
             // Get form data
             const username = document.getElementById('signup-username').value;
             const email = document.getElementById('signup-email').value;
             const password = document.getElementById('signup-password').value;
-
+            
             // Check if username already exists
             if (users.find(user => user.username === username)) {
                 showAlert('Username already exists!', 'danger');
                 return;
             }
-
+            
             // Create new user
             const newUser = {
                 id: users.length + 1,
@@ -414,31 +412,31 @@
                 email: email,
                 password: password
             };
-
+            
             // Add to users array (simulating database storage)
             users.push(newUser);
-
+            
             // Show success message and switch to login
             showAlert('Account created successfully! Please login.', 'success');
             setTimeout(() => {
                 showSection('login-section');
             }, 1500);
-
+            
             // Reset form
             document.getElementById('signup-form').reset();
         }
-
+        
         // Handle user login
         function handleLogin(event) {
             event.preventDefault(); // Prevent form submission
-
+            
             // Get login credentials
             const username = document.getElementById('login-username').value;
             const password = document.getElementById('login-password').value;
-
+            
             // Find user in database
             const user = users.find(u => u.username === username && u.password === password);
-
+            
             if (user) {
                 // Login successful
                 currentUser = user;
@@ -449,11 +447,11 @@
                 // Login failed
                 showAlert('Invalid username or password!', 'danger', 'login-alert');
             }
-
+            
             // Reset form
             document.getElementById('login-form').reset();
         }
-
+        
         // Handle logout
         function handleLogout() {
             currentUser = null;
@@ -462,14 +460,14 @@
 
         // ===== INVENTORY MANAGEMENT FUNCTIONS =====
         // These functions handle CRUD operations for inventory items
-
+        
         // Function to render inventory table
         function renderInventoryTable(items = inventory) {
             const tableBody = document.getElementById('inventory-table-body');
-
+            
             // Clear existing rows
             tableBody.innerHTML = '';
-
+            
             // If no items to show
             if (items.length === 0) {
                 tableBody.innerHTML = `
@@ -479,17 +477,17 @@
                 `;
                 return;
             }
-
+            
             // Create table rows for each item
             items.forEach(item => {
                 const row = document.createElement('tr');
-
+                
                 // Determine stock level class for styling
                 let stockClass = '';
                 if (item.quantity <= 10) stockClass = 'text-danger';
                 else if (item.quantity <= 50) stockClass = 'text-warning';
                 else stockClass = 'text-success';
-
+                
                 // Create row HTML
                 row.innerHTML = `
                     <td>${item.id}</td>
@@ -507,42 +505,42 @@
                         </button>
                     </td>
                 `;
-
+                
                 tableBody.appendChild(row);
             });
         }
-
+        
         // Function to update dashboard statistics
         function updateDashboard() {
             // Calculate total items
             const totalItems = inventory.length;
             document.getElementById('total-items').textContent = totalItems;
-
+            
             // Calculate low stock items (quantity <= 10)
             const lowStock = inventory.filter(item => item.quantity <= 10).length;
             document.getElementById('low-stock').textContent = lowStock;
-
+            
             // Calculate total value
             const totalValue = inventory.reduce((sum, item) => sum + (item.quantity * item.price), 0);
             document.getElementById('total-value').textContent = `$${totalValue.toFixed(2)}`;
-
+            
             // Calculate unique categories
             const categories = [...new Set(inventory.map(item => item.category))].length;
             document.getElementById('categories').textContent = categories;
-
+            
             // Update table and filters
             renderInventoryTable();
             updateCategoryFilter();
         }
-
+        
         // Function to update category filter dropdown
         function updateCategoryFilter() {
             const categoryFilter = document.getElementById('category-filter');
             const categories = [...new Set(inventory.map(item => item.category))];
-
+            
             // Clear existing options except "All Categories"
             categoryFilter.innerHTML = '<option value="">All Categories</option>';
-
+            
             // Add category options
             categories.forEach(category => {
                 const option = document.createElement('option');
@@ -551,7 +549,7 @@
                 categoryFilter.appendChild(option);
             });
         }
-
+        
         // Function to add new item
         function addItem(itemData) {
             const newItem = {
@@ -561,16 +559,16 @@
                 quantity: parseInt(itemData.quantity),
                 price: parseFloat(itemData.price)
             };
-
+            
             inventory.push(newItem);
             updateDashboard();
         }
-
+        
         // Function to edit existing item
         function editItem(id) {
             const item = inventory.find(item => item.id === id);
             if (!item) return;
-
+            
             // Populate modal form with item data
             document.getElementById('modalTitle').textContent = 'Edit Item';
             document.getElementById('item-id').value = item.id;
@@ -578,12 +576,12 @@
             document.getElementById('item-category').value = item.category;
             document.getElementById('item-quantity').value = item.quantity;
             document.getElementById('item-price').value = item.price;
-
+            
             // Show modal
             const modal = new bootstrap.Modal(document.getElementById('addItemModal'));
             modal.show();
         }
-
+        
         // Function to update existing item
         function updateItem(id, itemData) {
             const itemIndex = inventory.findIndex(item => item.id === id);
@@ -598,7 +596,7 @@
                 updateDashboard();
             }
         }
-
+        
         // Function to delete item
         function deleteItem(id) {
             if (confirm('Are you sure you want to delete this item?')) {
@@ -609,64 +607,64 @@
 
         // ===== SEARCH AND FILTER FUNCTIONS =====
         // These functions handle filtering and searching inventory items
-
+        
         // Function to filter inventory based on search and filter criteria
         function filterInventory() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
             const categoryFilter = document.getElementById('category-filter').value;
             const stockFilter = document.getElementById('stock-filter').value;
-
+            
             let filteredItems = inventory.filter(item => {
                 // Search filter
                 const matchesSearch = item.name.toLowerCase().includes(searchTerm) ||
-                    item.category.toLowerCase().includes(searchTerm);
-
+                                    item.category.toLowerCase().includes(searchTerm);
+                
                 // Category filter
                 const matchesCategory = !categoryFilter || item.category === categoryFilter;
-
+                
                 // Stock filter
                 let matchesStock = true;
                 if (stockFilter === 'low') matchesStock = item.quantity <= 10;
                 else if (stockFilter === 'medium') matchesStock = item.quantity > 10 && item.quantity <= 50;
                 else if (stockFilter === 'high') matchesStock = item.quantity > 50;
-
+                
                 return matchesSearch && matchesCategory && matchesStock;
             });
-
+            
             renderInventoryTable(filteredItems);
         }
 
         // ===== EVENT LISTENERS =====
         // This section sets up all the event listeners for user interactions
-
+        
         // Wait for DOM to be fully loaded before setting up event listeners
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Navigation event listeners
             document.getElementById('show-login').addEventListener('click', (e) => {
                 e.preventDefault();
                 showSection('login-section');
             });
-
+            
             document.getElementById('show-signup').addEventListener('click', (e) => {
                 e.preventDefault();
                 showSection('signup-section');
             });
-
+            
             // Form event listeners
             document.getElementById('signup-form').addEventListener('submit', handleSignup);
             document.getElementById('login-form').addEventListener('submit', handleLogin);
             document.getElementById('logout-btn').addEventListener('click', handleLogout);
-
+            
             // Modal event listeners
-            document.getElementById('addItemModal').addEventListener('hidden.bs.modal', function () {
+            document.getElementById('addItemModal').addEventListener('hidden.bs.modal', function() {
                 // Reset modal when closed
                 document.getElementById('modalTitle').textContent = 'Add New Item';
                 document.getElementById('item-form').reset();
                 document.getElementById('item-id').value = '';
             });
-
+            
             // Save item button event listener
-            document.getElementById('save-item-btn').addEventListener('click', function () {
+            document.getElementById('save-item-btn').addEventListener('click', function() {
                 const itemId = document.getElementById('item-id').value;
                 const itemData = {
                     name: document.getElementById('item-name').value,
@@ -674,13 +672,13 @@
                     quantity: document.getElementById('item-quantity').value,
                     price: document.getElementById('item-price').value
                 };
-
+                
                 // Validate form data
                 if (!itemData.name || !itemData.category || !itemData.quantity || !itemData.price) {
                     alert('Please fill in all fields');
                     return;
                 }
-
+                
                 if (itemId) {
                     // Update existing item
                     updateItem(parseInt(itemId), itemData);
@@ -688,28 +686,27 @@
                     // Add new item
                     addItem(itemData);
                 }
-
+                
                 // Close modal
                 const modal = bootstrap.Modal.getInstance(document.getElementById('addItemModal'));
                 modal.hide();
             });
-
+            
             // Search and filter event listeners
             document.getElementById('search-input').addEventListener('input', filterInventory);
             document.getElementById('category-filter').addEventListener('change', filterInventory);
             document.getElementById('stock-filter').addEventListener('change', filterInventory);
-
+            
             // Initialize dashboard if starting there
             updateDashboard();
         });
 
         // ===== GLOBAL FUNCTIONS =====
         // These functions need to be globally accessible for onclick events
-
+        
         // Make functions globally accessible for HTML onclick attributes
         window.editItem = editItem;
         window.deleteItem = deleteItem;
     </script>
 </body>
-
 </html>
